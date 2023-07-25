@@ -81,6 +81,7 @@ const submitAttempt = async () => {
 };
 
 const handleKey = (evt: KeyboardEvent) => {
+  if (!props.isActive) return;
   switch (evt.key) {
     case "Backspace":
       modifyLetterArray();

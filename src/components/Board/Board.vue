@@ -1,6 +1,10 @@
 <template>
   <div v-if="props.isLoading" class="loading">Thinking of a word...</div>
-  <div v-else class="board">
+  <div
+    v-else
+    class="board"
+    @click="() => attempts?.at(state.activeAttemptIdx)?.$el.focus()"
+  >
     <Attempt
       v-for="i in Array.from({ length: config.MAX_TRIES }, (v, i) => i)"
       :word="props.word"
