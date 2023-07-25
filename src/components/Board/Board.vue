@@ -85,6 +85,13 @@ const onAttemptMounted = (e: { key: number }) => {
     );
   }
 };
+
+const putLetterFromKeyboard = (letter: string) => {
+  const attempt = attempts.value?.at(state.activeAttemptIdx);
+  attempt?.handleKey({ key: letter });
+};
+
+defineExpose({ putLetterFromKeyboard });
 </script>
 
 <style scoped>

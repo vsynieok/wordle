@@ -80,7 +80,7 @@ const submitAttempt = async () => {
   } else emit("invalidWord");
 };
 
-const handleKey = (evt: KeyboardEvent) => {
+const handleKey = (evt: { key: string }) => {
   if (!props.isActive) return;
   switch (evt.key) {
     case "Backspace":
@@ -100,7 +100,7 @@ const setLettersFromSave = (letters: Letter[]) => {
   state.letters = letters;
 };
 
-defineExpose({ setLettersFromSave });
+defineExpose({ setLettersFromSave, handleKey });
 </script>
 
 <style scoped>

@@ -22,6 +22,10 @@ const props = defineProps<{
   padding: 5px;
 }
 
+.keyletter:hover {
+  cursor: pointer;
+}
+
 .unused {
   background-color: v-bind("themeColors.greys.keys");
 }

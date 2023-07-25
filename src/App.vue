@@ -1,13 +1,18 @@
 <template>
   <Notification ref="notification" />
   <Board
+    ref="board"
     :word="state.currentWord"
     @result-submitted="onResultSubmitted"
     @used-letters="onUsedLetters"
     @invalid-word="onInvalidWord"
     :is-loading="state.isLoading"
   />
-  <KeyBoard v-if="!state.isLoading" ref="keyboard" />
+  <KeyBoard
+    v-if="!state.isLoading"
+    ref="keyboard"
+    @letter-clicked="onLetterClicked"
+  />
   <Results
     v-if="state.showResults"
     :points="state.wordPoints"
@@ -31,6 +36,7 @@ import saveUtils from "./utils/saveUtils";
 import Notification from "./components/Notification.vue";
 import messageUtils from "./utils/messageUtils";
 
+const board = ref<InstanceType<typeof Board>>();
 const keyboard = ref<InstanceType<typeof KeyBoard>>();
 const notification = ref<InstanceType<typeof Notification>>();
 
@@ -91,6 +97,10 @@ const onUsedLetters = (letters: Letter[]) => {
 
 const onModalHide = () => {
   state.showResults = false;
+};
+
+const onLetterClicked = (letter: string) => {
+  board.value?.putLetterFromKeyboard(letter);
 };
 
 const fetchWord = async () => {

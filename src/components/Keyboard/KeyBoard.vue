@@ -3,6 +3,7 @@
     <div class="keyboard-row">
       <KeyLetter
         v-for="k in state.keys[0].split('')"
+        @click="() => $emit('letterClicked', k)"
         :letter="k"
         :key="k"
         :status="getStatus(k)"
@@ -11,6 +12,7 @@
     <div class="keyboard-row">
       <KeyLetter
         v-for="k in state.keys[1].split('')"
+        @click="() => $emit('letterClicked', k)"
         :letter="k"
         :key="k"
         :status="getStatus(k)"
@@ -19,6 +21,13 @@
     <div class="keyboard-row">
       <KeyLetter
         v-for="k in state.keys[2].split('')"
+        @click="
+          () =>
+            $emit(
+              'letterClicked',
+              k === '#' ? 'Enter' : k === '$' ? 'Backspace' : k
+            )
+        "
         :letter="k === '#' ? 'Enter' : k === '$' ? 'Backspace' : k"
         :key="k"
         :status="getStatus(k)"
@@ -91,6 +100,11 @@ onMounted(() => {
 });
 
 defineExpose({ setKeys, loadSaveData });
+defineEmits({
+  letterClicked(letter: string) {
+    return letter;
+  },
+});
 </script>
 
 <style scoped>
