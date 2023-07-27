@@ -128,4 +128,10 @@ button:hover {
     transform: translate(-50%, -50%);
   }
 }
+
+@media only screen and (max-width: 565px) {
+  .modal {
+    width: calc(100% - 50px);
+  }
+}
 </style>

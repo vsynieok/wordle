@@ -41,4 +41,10 @@ const props = defineProps<{
 .position {
   background-color: v-bind("themeColors.letters.position");
 }
+
+@media only screen and (min-width: 768px) {
+  .keyletter {
+    font-size: 30px;
+  }
+}
 </style>

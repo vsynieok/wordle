@@ -43,14 +43,19 @@ export function compareWords(wordA: string, wordB: string): Letter[] {
     if (guessCountA > guessCountB) {
       if (
         results[i].status === "incorrectposition" &&
-        results.some((r) => r.text === v && r.status === "correct")
+        results.some(
+          (r, ri) => r.text === v && r.status === "correct" && ri !== i
+        )
       ) {
         results[i].status = "incorrect";
         return;
       }
       if (
         results[i].status === "incorrectposition" &&
-        results.some((r) => r.text === v && r.status === "incorrectposition")
+        results.some(
+          (r, ri) =>
+            r.text === v && r.status === "incorrectposition" && ri !== i
+        )
       ) {
         results[i].status = "incorrect";
       }

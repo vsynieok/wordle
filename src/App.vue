@@ -137,15 +137,21 @@ onMounted(() => {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
+* {
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   width: 100vw;
   height: 100vh;
   font-family: "Roboto Mono", monospace;
+  background-color: #242424;
+
+  overflow: hidden;
 }
 
 #app {
-  background-color: #242424;
   margin: 0;
   width: 100%;
   height: 100%;

@@ -98,6 +98,7 @@ defineExpose({ putLetterFromKeyboard });
 .board {
   width: 50%;
   max-width: 500px;
+  min-width: 300px;
   padding: 5px 0 5px 0;
 
   display: flex;
